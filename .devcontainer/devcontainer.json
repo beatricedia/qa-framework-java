@@ -1,0 +1,35 @@
+{
+  "name": "Java 11 Maven Environment",
+  "postCreateCommand": [
+    "sudo apt-get update", // Actualizează pachetele
+    "sudo apt-get install -y openjdk-11-jdk", // Instalează Java 11
+    "sudo apt-get install -y maven", // Instalează Maven
+    "java -version", // Verifică versiunea Java
+    "mvn -v", // Verifică versiunea Maven
+    "mvn archetype:generate -DgroupId=com.qa -DartifactId=qa-framework -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false", // Creează proiectul Maven
+    //get google chrome
+    "sudo apt install -y wget curl",
+    "wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -",
+    // "sudo sh -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'",
+    "sudo apt update",
+    "sudo apt install google-chrome-stable",
+    "wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb",
+    "sudo apt update",
+    "sudo apt install -y ./google-chrome-stable_current_amd64.deb",
+    "mvn dependency:copy-dependencies -Dartifact=com.seleniumhq.selenium:selenium-chrome-driver:4.10.0",
+    "wget https://storage.googleapis.com/chrome-for-testing-public/114.0.5735.90/linux64/chrome-linux64.zip",
+    "unzip chrome-linux64.zip",
+    "sudo mv chrome-linux64 /opt/google/chrome-114",
+    "sudo ln -sf /opt/google/chrome-114/chrome /usr/bin/google-chrome",
+    "google-chrome --version"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "ms-vscode.test-adapter-converter",
+        "eamodio.gitlens"
+      ]
+    }
+  }
+}
